@@ -10,8 +10,7 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection, computerSelection) {
-  playerSelection = playerSelection.toLowerCase();
-  if (playerSelection == "rock") {
+  if (playerSelection == "Rock") {
     if (computerSelection == "Scissors") {
       console.log("You win! Rock beats Scissors");
       return 1;
@@ -23,7 +22,7 @@ function playRound(playerSelection, computerSelection) {
       return 0;
     }
   }
-  if (playerSelection == "paper") {
+  if (playerSelection == "Paper") {
     if (computerSelection == "Rock") {
       console.log("You win! Paper beats Rock");
       return 1;
@@ -35,7 +34,7 @@ function playRound(playerSelection, computerSelection) {
       return 0;
     }
   }
-  if (playerSelection == "scissors") {
+  if (playerSelection == "Scissors") {
     if (computerSelection == "Paper") {
       console.log("You win! Scissors beats Paper");
       return 1;
@@ -50,8 +49,26 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function playGame() {
+  let computerPoints = 0;
+  let playerPoints = 0;
+  let result;
+  const btns = document.querySelectorAll('.buttons');
+  btns.forEach(item => {
+    item.addEventListener('click', e => {
+      const buttonType = e.target.textContent;
+      result = playRound(buttonType, getComputerChoice());
+      if (result == 1) {
+        playerPoints++;
+      } else if (result == -1) {
+        computerPoints++;
+      }
+      if (computerPoints >= 5) {
+        console.log("Computer wins!");
+      } else if (playerPoints >= 5) {
+        console.log("You win!");
+      }
+   })
+ })
 }
 
-const rockBtn = document.querySelector('#rock');
-const paperBtn = document.querySelector('#paper');
-const scissorsBtn = document.querySelector('#scissors');
+playGame();
