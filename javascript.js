@@ -50,26 +50,8 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function playGame() {
-  let humanScore = 0;
-  let computerScore = 0;
-  let humanChoice;
-  let computerChoice;
-  let returnValue;
-  for (i = 0; i < 5; i++) {
-    humanChoice = prompt("Rock, paper, or scissors?");
-    computerChoice = getComputerChoice();
-    returnValue = playRound(humanChoice, computerChoice);
-    if (returnValue == 1) {
-      humanScore++;
-    } else if (returnValue == -1) {
-      computerScore++;
-    }
-  }
-  if (humanScore > computerScore) {
-    console.log("You won! " + humanScore + " vs. " + computerScore);
-  } else if (humanScore < computerScore) {
-    console.log("You lost! " + humanScore + " vs. " + computerScore);
-  } else {
-    console.log("You drew! " + humanScore + " vs. " + computerScore);
-  }
 }
+
+const rockBtn = document.querySelector('#rock');
+const paperBtn = document.querySelector('#paper');
+const scissorsBtn = document.querySelector('#scissors');
